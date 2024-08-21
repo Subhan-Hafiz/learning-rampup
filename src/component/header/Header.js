@@ -45,7 +45,7 @@ const HeaderComponent = () => {
 
                     {/* Center Section: Navigation Links */}
                     <Box flex direction="row" justify="center" align="center" gap="medium">
-                        <Nav direction="row" gap="medium">
+                        <Nav direction="row" gap="medium" className='nav-menu'>
                             <NavLink
                                 to="/home"
                                 className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}

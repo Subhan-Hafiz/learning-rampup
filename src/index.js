@@ -5,26 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Grommet } from 'grommet';
-
-const theme = {
-  global: {
-    colors: {
-      brand: '#228BE6',
-    },
-    font: {
-      family: "Roboto Condensed",
-      size: '14px',
-      height: '20px',
-    },
-  },
-};
-
+import { hpe } from 'grommet-theme-hpe';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Grommet theme={theme}>
+      <Grommet theme={hpe}>
         <App />
       </Grommet>
     </BrowserRouter>
