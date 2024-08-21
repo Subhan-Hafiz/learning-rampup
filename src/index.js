@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { Grommet } from 'grommet';
+
+const theme = {
+  global: {
+    colors: {
+      brand: '#228BE6',
+    },
+    font: {
+      family: "Roboto Condensed",
+      size: '14px',
+      height: '20px',
+    },
+  },
+};
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Grommet theme={theme}>
+        <App />
+      </Grommet>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
