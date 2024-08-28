@@ -1,14 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import ManageCard from './Pages/ManageCardPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Headers from './Components/Headers';
+import { Grommet } from 'grommet';
+import { makeServer } from './server/server';
+import HomePage from './Pages/HomePage';
+import UsersPage from './Pages/UsersPage';
 
+import { customTheme } from './styles/theme';
+
+
+if (process.env.NODE_ENV === "development") {
+  makeServer();
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ManageCard />
+   <Grommet theme={customTheme} full>
+      <BrowserRouter>
+        <Headers />
+        <Routes>
+          <Route path='/' element={<HomePage />}></Route>
+          <Route path='/users' element={<UsersPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </Grommet>
   </React.StrictMode>
 );
 
