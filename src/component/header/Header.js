@@ -19,7 +19,7 @@ const HeaderComponent = () => {
                     <Box direction="row" align="center" gap="small">
                         {/* Logo */}
                         <NavLink to="/home" className="nav-link">
-                            <Image src="./logo.png" alt="Logo" width="100px" />
+                            <Image src="/logo.png" alt="Logo" width="100px" />
                         </NavLink>
 
                         {/* Dropdown Menu */}
@@ -59,7 +59,7 @@ const HeaderComponent = () => {
                                 <Text>Services</Text>
                             </NavLink>
                             <NavLink
-                                to="/devices"
+                                to="/devices/inventory"
                                 className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
                             >
                                 <Text>Devices</Text>

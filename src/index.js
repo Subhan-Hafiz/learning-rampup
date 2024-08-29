@@ -6,8 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Grommet } from 'grommet';
 import { hpe } from 'grommet-theme-hpe';
+import { makeServer } from './mirage/server';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+if (process.env.NODE_ENV === 'development') {
+  makeServer();
+}
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
