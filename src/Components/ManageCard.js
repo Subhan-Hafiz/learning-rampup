@@ -10,6 +10,7 @@ const ManageCard = ({card}) => {
         UserAdd: <UserAdd color="brown" size="medium" />,
         UserAdmin: <UserAdmin color="green" size="medium" />,
       };
+      
     return (
         <Card pad="small" direction='row'>
             <Box direction="row">

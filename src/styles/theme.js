@@ -109,20 +109,20 @@ export const customTheme = deepMerge(hpe, {
             },
         },
     },
-    checkBox: {
-        border: {
-            color: 'accent-3',
-            width: '2px',
-        },
-        check: {
-            color: 'brand',
-            size: '20px',
-        },
-        hover: {
-            border: {
-                color: 'brand',
-            },
-        },
-    },
+    // checkBox: {
+    //     border: {
+    //         color: 'accent-3',
+    //         width: '2px',
+    //     },
+    //     check: {
+    //         color: 'brand',
+    //         size: '20px',
+    //     },
+    //     hover: {
+    //         border: {
+    //             color: 'brand',
+    //         },
+    //     },
+    // },
 
 });

@@ -10,7 +10,6 @@ export default Factory.extend({
     },
     email() {
         return faker.internet.email()
-
     },
     status() {
         return 'Unvarified'

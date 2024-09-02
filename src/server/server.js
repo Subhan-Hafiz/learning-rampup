@@ -20,7 +20,6 @@ export function makeServer({ environment = "development" } = {}) {
       manageCard: userManageFactory,
       userListCard: userCardFactory
     },
-
     seeds(server) {
         userSeeds(server);
     },

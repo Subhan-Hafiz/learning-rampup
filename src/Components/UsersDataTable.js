@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { Avatar, Box, Data, DataSearch, DataSummary, DataTable, Menu, Meter, Pagination, Text, Toolbar } from 'grommet';
 import { MoreVertical } from 'grommet-icons';
+import EditUserTableForm from './EditForm';
+import DeleteUserTableForm from './DeleteUserTableForm';
 // import { tabularData } from '../data/usersTabularData';
 
 const defaultView = {
@@ -11,12 +13,25 @@ const defaultView = {
 };
 const UserDataTable = () => {
     const [tabularData, setTab] = useState([])
+    const [modalCallback, setCallback] = useState('');
+    
     useEffect(() => {
         fetch(`/api/users/`)
-          .then((res) => res.json())
-          .then((data) => setTab((data.users)));
-      }, []);
+            .then((res) => res.json())
+            .then((data) => setTab((data.users)));
+    }, [modalCallback]);
+
     const [select, setSelect] = useState([]);
+
+    const [editRow, setEditRow] = useState(null);
+    const [deleteRow, setDeleteRow] = useState(null);
+    const onEdit = (e, rowSelect) => {
+        setEditRow((rs) => { return ({ ...rs, rowSelect }) });
+    }
+    const onDelete = (e, rowSelect) => {
+        setDeleteRow((rs) => { return ({ ...rs, rowSelect }) });
+    }
+
     const columns = [
         {
             property: 'name',
@@ -60,12 +75,12 @@ const UserDataTable = () => {
         {
             property: 'actions',
             header: <Text size='small'>Actions</Text>,
-            render: () => (
+            render: (rowSelect) => (
                 <Menu
                     icon={<MoreVertical size='small' />}
                     items={[
-                        { label: 'Resend Email Invite', onClick: () => { } },
-                        { label: 'Delete', onClick: () => { } },
+                        { label: 'Edit', onClick: (e) => { onEdit(e, rowSelect) } },
+                        { label: 'Delete', onClick: (e) => { onDelete(e, rowSelect) } },
                     ]}
                 />
             ),
@@ -89,24 +104,16 @@ const UserDataTable = () => {
     );
     return (
         <Box pad="medium">
-            {/* working except search
-            <Data data={paginatedData}
-                view={view}
-                onView={setView}
-                filters={filters}
-                onFilters={setFilters}
-                total={tabularData.length}>
-                <Toolbar>
-                    <DataSearch />
-                </Toolbar>
-                <DataSummary />
-                <DataTable step={3} columns={columns} />
-                <Pagination
-                    summary //showing 5 of 6
-                    stepOptions //items box dropdown
-                    numberItems={tabularData.length}
-                    pad={{ vertical: 'xsmall', left: 'small' }} />
-            </Data> */}
+
+            {/* EDIT MODAL popup */}
+            {
+                (editRow !== null) && <EditUserTableForm rowSelect={editRow} callback={setCallback} />
+            }
+            {/* DELETE MODAL */}
+            {
+                (deleteRow !== null) && <DeleteUserTableForm rowSelect={deleteRow} callback={setCallback} />
+            }
+            {/* Data Table */}
             <Data
                 data={paginatedData}
                 total={filteredData.length}
@@ -141,3 +148,22 @@ const UserDataTable = () => {
 };
 
 export default UserDataTable;
+
+{/* working except search
+            <Data data={paginatedData}
+                view={view}
+                onView={setView}
+                filters={filters}
+                onFilters={setFilters}
+                total={tabularData.length}>
+                <Toolbar>
+                    <DataSearch />
+                </Toolbar>
+                <DataSummary />
+                <DataTable step={3} columns={columns} />
+                <Pagination
+                    summary //showing 5 of 6
+                    stepOptions //items box dropdown
+                    numberItems={tabularData.length}
+                    pad={{ vertical: 'xsmall', left: 'small' }} />
+            </Data> */}
