@@ -7,7 +7,7 @@ import "./Header.css";
 const HeaderComponent = () => {
     return (
         <Grommet>
-            <Header background="background" pad={{ top: "10px", bottom: "10px", left: "30px", right: "30px" }}>
+            <Header background="background" pad="small">
                 <Box
                     direction="row"
                     fill="horizontal"
@@ -32,7 +32,7 @@ const HeaderComponent = () => {
                                 </Box>
                             }
                             dropContent={
-                                <Box pad={{ top: "10px", bottom: "10px", left: "10px", right: "10px" }}
+                                <Box pad="small"
                                     background="light-2">
                                     <Text>Option 1</Text>
                                     <Text>Option 2</Text>
@@ -93,7 +93,7 @@ const HeaderComponent = () => {
                                     <Box
                                         border={{ side: 'bottom', color: 'light-4', size: '1px' }}
                                         margin={{ bottom: 'small' }}
-                                        pad={{ top: "10px", bottom: "10px", left: "10px", right: "10px" }}
+                                        pad="small"
                                     >
                                         <Text weight="bold">User Dev</Text>
                                         <Text size="small" color="dark-4">
@@ -101,7 +101,7 @@ const HeaderComponent = () => {
                                         </Text>
                                     </Box>
                                     <Box
-                                        pad={{ top: "0", bottom: "10px", left: "10px", right: "10px" }} className='user-link'
+                                        pad="small" className='user-link'
                                     >
                                         <NavLink to="/account-details">
                                             <Text>HPE UserAccount Details</Text>
@@ -120,8 +120,7 @@ const HeaderComponent = () => {
                                 </Box>
                             }
                             dropProps={{
-                                align: { top: 'bottom', right: 'right' },
-                                margin: { top: '8px' }
+                                align: { top: 'bottom', right: 'right' }
                             }}
                         />
                     </Nav>

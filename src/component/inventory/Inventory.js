@@ -69,7 +69,6 @@ const InventoryComponent = () => {
                 <HeadingComponent
                     title={"Inventory"}
                     description={"View and onboard devices in your inventory. Added devices can be associated with an application."}
-                    mt="15px"
                 />
                 <Button label="Add Item" primary />
             </Box>
@@ -83,7 +82,7 @@ const InventoryComponent = () => {
             </Box>
 
             <Box margin={{ top: 'medium' }}>
-                <Box width="200px">
+                <Box width="medium">
                     <TextInput
                         placeholder="Search inventory..."
                         value={searchText}
