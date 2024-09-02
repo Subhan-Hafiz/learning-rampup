@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes, Navigate, useLocation, useParams } from "react-router-dom";
 import HeaderComponent from './component/header/Header';
-import DevicesComponent from './component/devides/Devices';
+import DevicesComponent from './component/devices/Devices';
 import InventoryComponent from './component/inventory/Inventory';
 
 function App() {

@@ -39,7 +39,7 @@ const HeaderComponent = () => {
                                     <Text>Option 3</Text>
                                 </Box>
                             }
-                            dropProps={{ align: { top: 'bottom', right: 'right' } }}
+                            dropProps={{ align: { top: 'bottom', right: 'right' }, plain: true }}
                         />
                     </Box>
 
