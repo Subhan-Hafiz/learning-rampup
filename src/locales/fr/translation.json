@@ -1,0 +1,14 @@
+{
+    "admin_post_title": "Publication d'administrateur",
+    "admin_post_content": "Ceci est une publication par un administrateur",
+    "customer_post_title": "Publication de client",
+    "customer_post_content": "Ceci est une publication par un client",
+    "story_title": "Titre de l'histoire",
+    "story_content": "Ceci est le contenu de l'histoire.",
+    "email_already_registered": "L'email est déjà enregistré",
+    "registration_successful": "Inscription réussie",
+    "login_successful": "Connexion réussie",
+    "invalid_email_or_password": "Email ou mot de passe invalide",
+    "post_not_found": "Publication non trouvée",
+    "home_title": "Accueil"
+  }

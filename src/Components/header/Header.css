@@ -1,0 +1,46 @@
+header {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+/*Header Start*/
+header .dropdown-btn,
+header .dropdown-btn:hover {
+    border: none;
+    box-shadow: none;
+}
+
+header .dropdown-btn svg {
+    width: 12px;
+    height: 12px;
+}
+
+/*Header Middle*/
+header .nav-menu a {
+    text-decoration: none;
+    color: #28272a;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 50px;
+}
+
+header .nav-menu .kZyncG {
+    width: 8px;
+}
+
+header .nav-menu a:hover,
+header .nav-menu a.active {
+    background: #d8d8f9;
+}
+
+/*Header Right*/
+header .nav-icons a,
+header .nav-icons button {
+    padding: 0;
+    display: grid;
+}
+
+.user-dropdown a {
+    text-decoration: none;
+    color: #3a3939;
+    margin-bottom: 5px;
+}
