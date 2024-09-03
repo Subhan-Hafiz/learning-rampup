@@ -13,6 +13,6 @@ export default function certificateRoutes() {
     this.delete("/certificates/:id", (schema, request) => {
         let id = request.params.id
 
-        return schema.certificates.find(id).destroy()
+        return schema.certs.find(id).destroy()
     })
 }

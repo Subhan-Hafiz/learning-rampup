@@ -2,14 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Box, Data, DataSearch, DataTable, Pagination, Toolbar, Menu, Text, Avatar, DataSummary } from 'grommet';
 import InfoBar from '../Components/Infobar';
 import CertificatesHeader from '../Components/CertificateHeader';
+import axios from 'axios';
 
 const CertificatesPage = () => {
     const [certs, setCerts] = useState([])
     useEffect(() => {
+        fetchData()
+    }, []);
+
+    const fetchData = () => {
         fetch("/api/certificates")
             .then((response) => response.json())
             .then((data) => setCerts(data.certs));
-    }, []);
+    }
     const columns = [
         {
             property: 'name',
@@ -53,11 +58,11 @@ const CertificatesPage = () => {
         {
             property: 'actions',
             header: <Text size='small'>Actions</Text>,
-            render: () => (
+            render: (cert) => (
                 <Menu
                     items={[
                         { label: 'Resend Email Invite', onClick: () => { } },
-                        { label: 'Delete', onClick: () => { } },
+                        { label: 'Delete', onClick: () => { debugger; axios.delete(`api/certificates/${cert.id}`); fetchData() } },
                     ]}
                 />
             ),
