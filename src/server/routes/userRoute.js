@@ -21,4 +21,6 @@ export default function userRoutes() {
   this.get("/user-list-cards", (schema) => {
     return schema.userListCards.all();
   });
+
+
 }

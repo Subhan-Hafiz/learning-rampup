@@ -4,8 +4,8 @@ import { deepMerge } from "grommet/utils";
 export const customTheme = deepMerge(hpe, {
     global: {
         colors: {
-            brand: '#ff6600', // Change the brand color
-            'accent-1': '#ffcc00',
+            brand: 'accent-1', // Change the brand color
+            'accent-1': 'light-1',
         },
         font: {
             family: 'Arial', // Change the font family

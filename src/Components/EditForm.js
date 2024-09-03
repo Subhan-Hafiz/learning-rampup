@@ -10,6 +10,7 @@ const EditUserTableForm = ({ rowSelect, callback }) => {
         email: '',
         verificationStatus: 'Unverified',
     });
+ 
     useEffect(() => {
         // console.log(rowSelect);
         setFormData(formData => {
@@ -45,7 +46,7 @@ const EditUserTableForm = ({ rowSelect, callback }) => {
     };
 
     return (
-        <Box align="center" justify="center" pad="large">
+        <Box align="center" justify="center">
             {showModal && (
                 <Layer onEsc={closeModal} onClickOutside={closeModal}>
                     <Box pad="medium" gap="small" width="medium">

@@ -9,5 +9,5 @@ export const patchApi = (url, id, data) => {
 }
 
 export const deleteApi = (url, id, data) => {
-    return axios.delete(`${url}//${id}`)
+    return axios.delete(`${url}/${id}`)
 }

@@ -14,7 +14,7 @@ const defaultView = {
 const UserDataTable = () => {
     const [tabularData, setTab] = useState([])
     const [modalCallback, setCallback] = useState('');
-    
+
     useEffect(() => {
         fetch(`/api/users/`)
             .then((res) => res.json())
@@ -103,8 +103,7 @@ const UserDataTable = () => {
         view.page * view.step
     );
     return (
-        <Box pad="medium">
-
+        <>
             {/* EDIT MODAL popup */}
             {
                 (editRow !== null) && <EditUserTableForm rowSelect={editRow} callback={setCallback} />
@@ -113,37 +112,42 @@ const UserDataTable = () => {
             {
                 (deleteRow !== null) && <DeleteUserTableForm rowSelect={deleteRow} callback={setCallback} />
             }
-            {/* Data Table */}
-            <Data
-                data={paginatedData}
-                total={filteredData.length}
-                view={view}
-                onView={setView}
-            >
-                <Toolbar>
-                    <DataSearch
-                        placeholder="Search..."
-                        value={search}
-                        onChange={(event) => setSearch(event.target.value)}
+            <Box pad="medium">
+
+
+                {/* Data Table */}
+                <Data
+                    data={paginatedData}
+                    total={filteredData.length}
+                    view={view}
+                    onView={setView}
+                >
+                    <Toolbar>
+                        <DataSearch
+                            placeholder="Search..."
+                            value={search}
+                            onChange={(event) => setSearch(event.target.value)}
+                        />
+                    </Toolbar>
+                    <DataSummary />
+                    <DataTable
+                        columns={columns}
+                        sortable
+                        primaryKey="id"
+                        select={select}
+                        onSelect={setSelect}
                     />
-                </Toolbar>
-                <DataSummary />
-                <DataTable
-                    columns={columns}
-                    sortable
-                    primaryKey="id"
-                    select={select}
-                    onSelect={setSelect}
-                />
-                <Pagination
-                    page={view.page}
-                    step={view.step}
-                    numberItems={filteredData.length}
-                    onChange={({ page, step }) => setView({ page, step })}
-                    margin={{ top: 'medium' }}
-                />
-            </Data>
-        </Box>
+                    <Pagination
+                        page={view.page}
+                        step={view.step}
+                        numberItems={filteredData.length}
+                        onChange={({ page, step }) => setView({ page, step })}
+                        margin={{ top: 'medium' }}
+                    />
+                </Data>
+            </Box>
+        </>
+
     );
 };
 

@@ -11,9 +11,9 @@ export default Factory.extend({
     email() {
         return faker.internet.email()
     },
-    status() {
-        return 'Unvarified'
-
+    status(i) {
+        const status = ['active', 'inActive', 'unVerified']
+        return status[i % status.length]
     },
     role() {
         return 'User'

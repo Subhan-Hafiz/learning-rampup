@@ -1,0 +1,22 @@
+.fixed-sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    overflow: auto; 
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px); 
+}
+.StyledBox-sc-13pk1d4-0.lhfelR{
+    width: 100%;
+}
+.nav-link{
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+.active{
+    background: #d8d8f9;
+}

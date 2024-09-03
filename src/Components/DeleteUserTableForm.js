@@ -23,7 +23,7 @@ const DeleteUserTableForm = ({ rowSelect, callback }) => {
         }
     }
     return (
-        <Box align="center" justify="center" pad="large">
+        <Box align="center" justify="center" pad="">
             {showModal && (
                 <Layer
                     onEsc={closeModal}

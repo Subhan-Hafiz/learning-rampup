@@ -6,6 +6,10 @@ import userModel from "./models/userModel";
 import userSeeds from "./seeds/userSeeds";
 import userManageFactory from "./factories/userManageFactory";
 import userCardFactory from "./factories/userCardFactory";
+import inventoryItemModel from "./models/inventoryItemModel";
+import inventoryItemFactory from "./factories/inventoryItemFactory";
+import inventorySeeds from "./seeds/inventorySeeds";
+import inventoryRoutes from "./routes/inventoryRoutes";
 
 export function makeServer({ environment = "development" } = {}) {
   return createServer({
@@ -13,20 +17,26 @@ export function makeServer({ environment = "development" } = {}) {
     models: {
       user: userModel,
       manageCard: userModel,
-      userListCard: userModel
+      userListCard: userModel,
+      inventoryItem: inventoryItemModel,
+
     },
     factories: {
       user: userFactory,
       manageCard: userManageFactory,
-      userListCard: userCardFactory
+      userListCard: userCardFactory,
+      inventoryItem: inventoryItemFactory,
+
     },
     seeds(server) {
         userSeeds(server);
+        inventorySeeds(server);
     },
 
     routes() {
       this.namespace = "api";
       userRoutes.call(this);
+      inventoryRoutes.call(this);
     },
   });
 }
