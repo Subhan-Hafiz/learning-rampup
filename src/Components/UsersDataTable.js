@@ -11,17 +11,23 @@ const defaultView = {
     sort: { property: 'name', direction: 'asc' },
     step: 3,
 };
-const UserDataTable = () => {
+const UserDataTable = ({ onCardClick }) => {
     const [tabularData, setTab] = useState([])
+    const [filteredData, setFilteredData] = useState(tabularData)
     const [modalCallback, setCallback] = useState('');
 
     useEffect(() => {
         fetch(`/api/users/`)
             .then((res) => res.json())
-            .then((data) => setTab((data.users)));
+            .then((data) => { setTab((data.users)); setFilteredData(data.users) });
     }, [modalCallback]);
 
-    const [select, setSelect] = useState([]);
+    useEffect(() => {
+        console.log(onCardClick)
+        console.log(tabularData.filter(item => item.status.toLowerCase() == onCardClick))
+        if (onCardClick) setFilteredData(tabularData.filter(item => item.status.toLowerCase() == onCardClick))
+    }, [onCardClick])
+
 
     const [editRow, setEditRow] = useState(null);
     const [deleteRow, setDeleteRow] = useState(null);
@@ -87,21 +93,9 @@ const UserDataTable = () => {
         },
     ];
 
-    const [view, setView] = useState({ page: 1, step: 3 });
 
     const [search, setSearch] = useState('');
 
-    // Handle search functionality
-    const filteredData = tabularData.filter(item =>
-        item.name.toLowerCase().includes(search.toLowerCase()) ||
-        item.email.toLowerCase().includes(search.toLowerCase())
-    );
-
-    // Pagination handling
-    const paginatedData = filteredData.slice(
-        (view.page - 1) * view.step,
-        view.page * view.step
-    );
     return (
         <>
             {/* EDIT MODAL popup */}
@@ -117,16 +111,10 @@ const UserDataTable = () => {
 
                 {/* Data Table */}
                 <Data
-                    data={paginatedData}
-                    total={filteredData.length}
-                    view={view}
-                    onView={setView}
+                    data={filteredData}
                 >
                     <Toolbar>
                         <DataSearch
-                            placeholder="Search..."
-                            value={search}
-                            onChange={(event) => setSearch(event.target.value)}
                         />
                     </Toolbar>
                     <DataSummary />
@@ -134,15 +122,9 @@ const UserDataTable = () => {
                         columns={columns}
                         sortable
                         primaryKey="id"
-                        select={select}
-                        onSelect={setSelect}
                     />
                     <Pagination
-                        page={view.page}
-                        step={view.step}
-                        numberItems={filteredData.length}
-                        onChange={({ page, step }) => setView({ page, step })}
-                        margin={{ top: 'medium' }}
+                        step={3}
                     />
                 </Data>
             </Box>

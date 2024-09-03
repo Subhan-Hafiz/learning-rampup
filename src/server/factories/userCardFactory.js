@@ -12,6 +12,10 @@ export default Factory.extend({
     cardBody(i) {
         const body = ['532', '255', '267', '98'];
         return body[i % body.length]
+    },
+    status(i) {
+        const headers = ['active', 'inActive', 'unVerified'];
+        return headers[i % headers.length]
     }
 
 })

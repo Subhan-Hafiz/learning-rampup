@@ -14,6 +14,7 @@ import { hpe } from 'grommet-theme-hpe';
 import HeaderComponent from './Components/header/Header';
 import DevicesComponent from './Components/devices/Devices';
 import InventoryComponent from './Components/inventory/Inventory';
+import CertificatesPage from './Pages/CertificatesPage';
 
 
 if (process.env.NODE_ENV === "development") {
@@ -32,6 +33,7 @@ root.render(
           <Route path="/devices" element={<DevicesComponent />} >
             <Route path="inventory" element={<InventoryComponent />} />
           </Route>
+          <Route path="/certificates" element={<CertificatesPage />} />
         </Routes>
       </BrowserRouter>
     </Grommet>

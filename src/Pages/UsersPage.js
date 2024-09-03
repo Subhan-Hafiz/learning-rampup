@@ -7,12 +7,17 @@ import UserDataTable from '../Components/UsersDataTable'
 
 const UsersPage = () => {
   const [cards, setCards] = useState([]);
+  const [cardIndexClicked, setCardIndexClicked] = useState("");
 
   useEffect(() => {
     fetch("/api/user-list-cards")
       .then((response) => response.json())
       .then((data) => setCards(data.userListCards));
   }, []);
+
+  const onClickOf = (i) => {
+    setCardIndexClicked(i)
+  }
 
   return (
     <div>
@@ -21,12 +26,12 @@ const UsersPage = () => {
         <Grid columns={{ count: 'fit', size: 'small' }} gap='small'>
           {
             cards.map((card, index) => (
-              <UsersCard key={index} card={card} />
+              <UsersCard key={index} card={card} onClick={() => { onClickOf(card.status) }} />
             ))
           }
         </Grid>
       </Box>
-      <UserDataTable />
+      <UserDataTable onCardClick={cardIndexClicked} />
     </div>
   )
 }

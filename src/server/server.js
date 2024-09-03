@@ -10,6 +10,10 @@ import inventoryItemModel from "./models/inventoryItemModel";
 import inventoryItemFactory from "./factories/inventoryItemFactory";
 import inventorySeeds from "./seeds/inventorySeeds";
 import inventoryRoutes from "./routes/inventoryRoutes";
+import certFactory from "./factories/certFactory";
+import certificatesModel from "./models/certificatesModel";
+import certificateSeeds from "./seeds/certificateSeeds";
+import certificateRoutes from "./routes/certificatesRoute";
 
 export function makeServer({ environment = "development" } = {}) {
   return createServer({
@@ -19,6 +23,7 @@ export function makeServer({ environment = "development" } = {}) {
       manageCard: userModel,
       userListCard: userModel,
       inventoryItem: inventoryItemModel,
+      cert: certificatesModel
 
     },
     factories: {
@@ -26,17 +31,20 @@ export function makeServer({ environment = "development" } = {}) {
       manageCard: userManageFactory,
       userListCard: userCardFactory,
       inventoryItem: inventoryItemFactory,
+      cert: certFactory
 
     },
     seeds(server) {
-        userSeeds(server);
-        inventorySeeds(server);
+      userSeeds(server);
+      inventorySeeds(server);
+      certificateSeeds(server)
     },
 
     routes() {
       this.namespace = "api";
       userRoutes.call(this);
       inventoryRoutes.call(this);
+      certificateRoutes.call(this)
     },
   });
 }

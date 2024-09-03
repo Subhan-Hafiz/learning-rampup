@@ -65,10 +65,10 @@ const HeaderComponent = () => {
                                 <Text>Devices</Text>
                             </NavLink>
                             <NavLink
-                                to="/system"
+                                to="/certificates"
                                 className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
                             >
-                                <Text>System</Text>
+                                <Text>Certificates</Text>
                             </NavLink>
                         </Nav>
                     </Box>
