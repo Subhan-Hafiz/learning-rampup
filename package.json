@@ -24,6 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "cypress run --env coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +44,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.12.47",
+    "babel-plugin-istanbul": "^7.0.0",
+    "cypress": "^13.14.2",
+    "nyc": "^17.0.0"
   }
 }

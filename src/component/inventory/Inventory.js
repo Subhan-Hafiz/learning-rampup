@@ -58,7 +58,7 @@ const InventoryComponent = () => {
             property: 'action',
             header: 'Action',
             render: (datum) => (
-                <Button label={<Trash/>} onClick={() => handleDeleteClick(datum)} />
+                <Button className="delete" label={<Trash/>} onClick={() => handleDeleteClick(datum)} />
             ),
         },
     ];
@@ -91,7 +91,7 @@ const InventoryComponent = () => {
                         margin={{ bottom: 'small' }}
                     />
                 </Box>
-                <DataTable
+                <DataTable id='dataTable'
                     columns={columns}
                     data={filteredData}
                     sortable

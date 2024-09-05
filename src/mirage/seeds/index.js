@@ -1,3 +1,11 @@
 export default function seeds(server) {
-    server.createList('inventoryItem', 10); // Creates 10 random items using the factory
+    // Create 10 items with dynamic data
+    server.createList('inventoryItem', 10);
+
+    // Create static data items
+    server.create('inventoryItem', {
+        name: 'Static Product Name 1',
+        category: 'Static Category 1',
+        quantity: 42
+    });
 }
